@@ -1,26 +1,32 @@
-NAME	=	philo
-CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -pthread
+NAME		=	philo
 
-SRCS	=	philo.c \
+CC			=	gcc
+CFLAGS		=	-Wall -Wextra -Werror -pthread
 
-OBJS_DIR = objs
-OBJS	=	$(SRCS:.c=.o)
-OBJS_PATH = $(addprefix $(OBJS_DIR)/, $(OBJS))
+SRCDIR		=	src
+OBJDIR		=	objs
+INCDIR		=	includes
+
+SRCS		=	$(SRCDIR)/philo.c \
+				$(SRCDIR)/simulation.c \
+				$(SRCDIR)/check_end.c \
+				$(SRCDIR)/utils.c
+
+OBJS		=	$(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS_PATH)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS_PATH)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-$(OBJS_DIR)/%.o: %.c | $(OBJS_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+	$(CC) $(CFLAGS) -I $(INCDIR) -c $< -o $@
 
-$(OBJS_DIR):
-	mkdir -p $(OBJS_DIR)
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
 
 clean:
-	rm -rf $(OBJS_DIR)
+	rm -rf $(OBJDIR)
 
 fclean: clean
 	rm -f $(NAME)
