@@ -6,7 +6,7 @@
 /*   By: juanherr <juanherr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:42:04 by juanherr          #+#    #+#             */
-/*   Updated: 2025/03/17 16:15:58 by juanherr         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:26:57 by juanherr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_philo
 	struct s_data	*data;
 }					t_philo;
 
-void				print_state(t_data data);
 size_t				get_time(void);
 void				*simulation(void *arg);
 int					check_end(t_philo *philo);
