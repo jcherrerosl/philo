@@ -6,7 +6,7 @@
 /*   By: juanherr <juanherr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:42:04 by juanherr          #+#    #+#             */
-/*   Updated: 2025/03/17 21:08:47 by juanherr         ###   ########.fr       */
+/*   Updated: 2025/03/17 22:22:51 by juanherr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ void				philo_sleep(t_philo *philo);
 void				philo_eat(t_philo *philo, int left_fork, int right_fork);
 void				one_philosopher(t_philo *philo);
 void				*simulation(void *arg);
+
+//forks.c
+void				take_forks(t_philo *philo, int left_fork, int right_fork);
 
 //philo.c
 void				init_data(t_data *data, int argc, char *argv[]);

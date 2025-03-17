@@ -6,7 +6,7 @@
 /*   By: juanherr <juanherr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:57:03 by juanherr          #+#    #+#             */
-/*   Updated: 2025/03/17 22:09:25 by juanherr         ###   ########.fr       */
+/*   Updated: 2025/03/17 22:33:49 by juanherr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,9 @@ void	philo_sleep(t_philo *philo)
 
 void	philo_eat(t_philo *philo, int left_fork, int right_fork)
 {
-	pthread_mutex_lock(&philo->data->forks[left_fork]);
-	pthread_mutex_lock(&philo->data->print_mutex);
-	printf("%ld %d has taken a fork\n", get_time(), philo->id);
-	pthread_mutex_unlock(&philo->data->print_mutex);
-	pthread_mutex_lock(&philo->data->forks[right_fork]);
-	pthread_mutex_lock(&philo->data->print_mutex);
-	printf("%ld %d has taken a fork\n", get_time(), philo->id);
-	pthread_mutex_unlock(&philo->data->print_mutex);
+	if (philo->data->number_of_philosophers == 2 && philo->id % 2 == 1)
+		usleep(1000);
+	take_forks(philo, left_fork, right_fork);
 	pthread_mutex_lock(&philo->data->meal_mutex);
 	philo->last_meal = get_time();
 	philo->meals++;

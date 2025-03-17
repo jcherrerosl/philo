@@ -10,7 +10,8 @@ INCDIR		=	includes
 SRCS		=	$(SRCDIR)/philo.c \
 				$(SRCDIR)/simulation.c \
 				$(SRCDIR)/check_end.c \
-				$(SRCDIR)/utils.c
+				$(SRCDIR)/utils.c \
+				$(SRCDIR)/forks.c \
 
 OBJS		=	$(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
