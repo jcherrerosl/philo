@@ -20,7 +20,7 @@ int	all_philosophers_full(t_philo *philo)
 	{
 		pthread_mutex_lock(&philo->data->print_mutex);
 		printf("%ld All philosophers have eaten %ld times\n", get_time(),
-				philo->data->times_of_must_eat);
+			philo->data->times_of_must_eat);
 		pthread_mutex_unlock(&philo->data->print_mutex);
 		pthread_mutex_lock(&philo->data->meal_mutex);
 		philo->data->stop_simulation = 1;
